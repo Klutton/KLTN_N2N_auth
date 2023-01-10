@@ -1,3 +1,4 @@
+# coding=UTF-8
 import os
 import time
 import uuid
@@ -15,7 +16,8 @@ try:
     pool = redis.ConnectionPool(host='127.0.0.1')
     _redis = redis.Redis(connection_pool=pool)
 except Exception as e:
-    print(f"连接到redis失败，报错：{e}")
+    print(f"连接到redis失败，报错：{e}\n")
+    exit()
 
 # postgreSQL config
 try:
@@ -23,7 +25,8 @@ try:
                           password=settings.config['db_password'])
     cur = db.cursor()
 except Exception as e:
-    print(f"疑似配置文件有误，或连接数据库失败，报错：{e}")
+    print(f"疑似配置文件有误，或连接数据库失败，报错：{e}\n")
+    exit()
 
 # flask config
 app = Flask(__name__)
@@ -58,6 +61,23 @@ def check_format(form):
         return False
 
 
+def register(username: str, password: str, code: str):
+    now = time.time()
+    exp = now + int(_redis.get(code))
+    rnow = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(now))
+    rexp = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(exp))
+    auth = 0
+
+    salt = bcrypt.gensalt(rounds=10)
+    hashed = bcrypt.hashpw(password.encode(), salt).decode()
+
+    cur.execute(f"INSERT INTO users VALUES ('{username}', '{hashed}', '{rnow}'"
+                f", '{rexp}', {auth});")
+    db.commit()
+    _redis.delete(code)
+    return
+
+
 def check_login(u: str, p: str):
     cur.execute(f"SELECT password FROM users WHERE username='{u}';")
     hashed = cur.fetchone()[0]
@@ -65,6 +85,11 @@ def check_login(u: str, p: str):
         return True
     else:
         return False
+
+
+def get_session(u: str, p: str):
+    if check_login(u,p):
+        session['u'] =
 
 
 '''def auth(name: str):
@@ -79,7 +104,6 @@ def load_user(user_id):
 
 @app.before_request
 def identify():
-    resp = make_response(redirect(request.path))
     if not session:
         session['id'] = str(uuid.uuid4())
         pass
@@ -143,18 +167,8 @@ def register():
                 password = request.form['password']
                 now = time.time()
                 exp = now + int(_redis.get(code))
-                rnow = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(now))
-                rexp = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(exp))
-                auth = 0
-
-                salt = bcrypt.gensalt(rounds=10)
-                hashed = bcrypt.hashpw(password.encode(), salt).decode()
-
-                cur.execute(f"INSERT INTO users VALUES ('{username}', '{hashed}', '{rnow}'"
-                            f", '{rexp}', {auth});")
-                db.commit()
-                _redis.delete(code)
                 strtime = time.strftime('%Y年%m月%d日 %H:%M:%S', time.localtime(exp))
+                register(username, password, code)
                 return f'''<h3>注册成功<h3>
                 <p>您的用户名{username}<p>
                 <p>有效期至{strtime}

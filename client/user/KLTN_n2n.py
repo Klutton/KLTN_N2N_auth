@@ -43,8 +43,16 @@ def connect(s: dict, ser: str):
 
 key = 'QSD>ak)as[d6a5d4AFfm.+faSD51'
 
-with open('config.json', 'r') as f:
-    config: dict = json.loads(f.read())
+try:
+    with open('config.json', 'r') as f:
+        config: dict = json.loads(f.read())
+except:
+    print("未找到配置文件'config.json'请检查配置文件")
+    subprocess.run(['pause'])
+    exit()
+
+if config['server'] == '':
+    config['server'] = str(input("您的配置文件中服务器为空，请输入服务器（前面不要加http://）："))
 
 if config['username'] == '':
     config['username'] = str(input("您的配置文件中账号为空，请输入你的账号："))
@@ -96,5 +104,6 @@ else:
 
         subprocess.run([f'.\edge.exe', '-c', group, '-l', f'{orserver}:{res["port"]}'
                            , '-k', randkey()], shell=True, stdout=1)
+        os.system('pause')
     except:
         exit()
