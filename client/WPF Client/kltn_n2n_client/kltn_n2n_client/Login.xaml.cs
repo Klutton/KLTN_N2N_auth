@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace kltn_n2n_client
 {
     /// <summary>
-    /// MainWindow.xaml 的交互逻辑
+    /// Login.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : NavigationWindow
+    public partial class Login : Page
     {
-        public MainWindow()
+        public Login()
         {
             InitializeComponent();
         }
