@@ -24,5 +24,11 @@ namespace kltn_n2n_client
         {
             InitializeComponent();
         }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // View Expense Report
+            Register expenseReportPage = new Register(this.peopleListBox.SelectedItem);
+            this.NavigationService.Navigate(expenseReportPage);
+        }
     }
 }

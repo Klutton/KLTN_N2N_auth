@@ -24,5 +24,12 @@ namespace kltn_n2n_client
         {
             InitializeComponent();
         }
+
+        // Custom constructor to pass expense report data
+        public Register(object data) : this()
+        {
+            // Bind to expense report data.
+            this.DataContext = data;
+        }
     }
 }

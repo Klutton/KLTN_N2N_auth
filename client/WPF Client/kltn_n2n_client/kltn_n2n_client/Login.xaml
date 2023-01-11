@@ -9,6 +9,41 @@
       Title="Login =•ェ•=">
 
     <Grid Margin="10,0,10,10">
+
+        <Grid.Resources>
+            <!-- Expense Report Data -->
+            <XmlDataProvider x:Key="ExpenseDataSource" XPath="Expenses">
+                <x:XData>
+                    <Expenses xmlns="">
+                        <Person Name="Mike" Department="Legal">
+                            <Expense ExpenseType="Lunch" ExpenseAmount="50" />
+                            <Expense ExpenseType="Transportation" ExpenseAmount="50" />
+                        </Person>
+                        <Person Name="Lisa" Department="Marketing">
+                            <Expense ExpenseType="Document printing"
+          ExpenseAmount="50"/>
+                            <Expense ExpenseType="Gift" ExpenseAmount="125" />
+                        </Person>
+                        <Person Name="John" Department="Engineering">
+                            <Expense ExpenseType="Magazine subscription" 
+         ExpenseAmount="50"/>
+                            <Expense ExpenseType="New machine" ExpenseAmount="600" />
+                            <Expense ExpenseType="Software" ExpenseAmount="500" />
+                        </Person>
+                        <Person Name="Mary" Department="Finance">
+                            <Expense ExpenseType="Dinner" ExpenseAmount="100" />
+                        </Person>
+                    </Expenses>
+                </x:XData>
+            </XmlDataProvider>
+
+            <!-- Name item template -->
+            <DataTemplate x:Key="nameItemTemplate">
+                <Label Content="{Binding XPath=@Name}"/>
+            </DataTemplate>
+        </Grid.Resources>
+        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="230" />
             <ColumnDefinition />
@@ -23,24 +58,29 @@
         </Grid.RowDefinitions>
 
 
+        <Label Grid.Column="1" Style="{StaticResource headerTextStyle}">
+            View Expense Report
+        </Label>
+
+
         <!-- People list -->
-        <Border Grid.Column="1" Grid.Row="1" Height="35" Padding="5" Background="#4E87D4">
-            <Label VerticalAlignment="Center" Foreground="White">Names</Label>
+        <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource listHeaderStyle}">
+            <Label Style="{StaticResource listHeaderTextStyle}">Names</Label>
         </Border>
-        <ListBox Name="peopleListBox" Grid.Column="1" Grid.Row="2">
-            <ListBoxItem>Mike</ListBoxItem>
-            <ListBoxItem>Lisa</ListBoxItem>
-            <ListBoxItem>John</ListBoxItem>
-            <ListBoxItem>Mary</ListBoxItem>
+        <ListBox Name="peopleListBox" Grid.Column="1" Grid.Row="2" 
+         ItemsSource="{Binding Source={StaticResource ExpenseDataSource}, XPath=Person}"
+         ItemTemplate="{StaticResource nameItemTemplate}">
         </ListBox>
 
         <!-- View report button -->
         <Button Grid.Column="1" Grid.Row="3" Margin="0,10,0,0" Width="125" 
-                Height="25" HorizontalAlignment="Right">View</Button>
+                Style="{StaticResource buttonStyle}">View</Button>
 
 
         <Grid.Background>
             <ImageBrush ImageSource="Klu.jpg"/>
         </Grid.Background>
+
+        
     </Grid>
 </Page>

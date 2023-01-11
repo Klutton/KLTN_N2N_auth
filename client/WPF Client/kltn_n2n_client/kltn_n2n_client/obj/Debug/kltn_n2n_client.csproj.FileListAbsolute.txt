@@ -18,3 +18,4 @@ C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\kltn_n2n_cli
 C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\kltn_n2n_client\obj\Debug\kltn_n2n_client.csproj.CoreCompileInputs.cache
 C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\kltn_n2n_client\obj\Debug\kltn_n2n_client.exe
 C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\kltn_n2n_client\obj\Debug\kltn_n2n_client.pdb
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\kltn_n2n_client\obj\Debug\App.baml
