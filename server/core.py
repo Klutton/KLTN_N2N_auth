@@ -89,7 +89,7 @@ def check_login(u: str, p: str):
 
 def get_session(u: str, p: str):
     if check_login(u,p):
-        session['u'] =
+        session['username'] =
 
 
 '''def auth(name: str):
@@ -143,7 +143,7 @@ def login():
                     username = request.form['username']
                     password = request.form['password']
                     if check_login(username, password):
-                        session['username'] = username
+                        get_session(username, password)
                         return f'欢迎，{username}<p><a href=/>返回<a>'
                     else:
                         return '账号密码错误<p><a href="/n2n_login">返回<a>'

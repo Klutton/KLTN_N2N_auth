@@ -1,3 +1,4 @@
+# coding=UTF-8
 import ctypes
 import json
 import os
@@ -102,8 +103,10 @@ else:
             print("\n启动失败，请检查edge.exe是否在此文件夹内")
             os.system('pause')
 
-        subprocess.run([f'.\edge.exe', '-c', group, '-l', f'{orserver}:{res["port"]}'
-                           , '-k', randkey()], shell=True, stdout=1)
+        os.system(f'powershell.exe -c ".\edge.exe -c NETWORKS -l {orserver}:{res["port"]} -k {randkey()}"')
+        #  os.system()
+        # subprocess.run([f'.\edge.exe', '-c', group, '-l', f'{orserver}:{res["port"]}', '-k', randkey()],
+        # shell=True, stdout=1)
         os.system('pause')
     except:
         exit()
