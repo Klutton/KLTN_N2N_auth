@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "WiuD+87vc26akXSFcfw//Z677RJip5dZq0DAT5h9GFcp7nEHh+0TkliW0CK8N/Z8z8LRZJTeLhXKTMHmncwspA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\86153\\Documents\\N2N_auth\\client\\WPF Client\\kltn_n2n_client\\Nyan Api\\Nyan Api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\86153\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\86153\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\86153\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\86153\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\86153\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\86153\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}

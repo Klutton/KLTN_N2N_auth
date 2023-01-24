@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Nyan Api.props" />
+</Project>

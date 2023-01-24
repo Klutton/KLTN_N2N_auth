@@ -1,0 +1,48 @@
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\Nyan n2n.csproj.AssemblyReference.cache
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\Nyan n2n.csproj.SuggestedBindingRedirects.cache
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\App.g.cs
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\Nyan n2n_MarkupCompile.cache
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\Nyan n2n_MarkupCompile.lref
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Debug\Nyan n2n.exe.config
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Debug\Nyan n2n.exe
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Debug\Nyan n2n.pdb
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Debug\DryIoc.dll
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Debug\MaterialDesignColors.dll
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Debug\Microsoft.Xaml.Behaviors.dll
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Debug\Prism.dll
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Debug\Prism.DryIoc.Wpf.dll
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Debug\Prism.Wpf.dll
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Debug\DryIoc.xml
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Debug\MaterialDesignColors.pdb
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Debug\Microsoft.Xaml.Behaviors.xml
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Debug\Prism.pdb
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Debug\Prism.xml
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Debug\Prism.DryIoc.Wpf.pdb
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Debug\Prism.DryIoc.Wpf.xml
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Debug\Prism.Wpf.pdb
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Debug\Prism.Wpf.xml
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\App.baml
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\Nyan n2n.g.resources
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\Nyan_n2n.Properties.Resources.resources
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\Nyan n2n.csproj.GenerateResource.cache
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\Nyan n2n.csproj.CoreCompileInputs.cache
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\Nyan n2n.csproj.CopyComplete
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\Nyan n2n.exe
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\Nyan n2n.pdb
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\Views\MainView.g.cs
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\Views\MainView.baml
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\Views\AboutView.g.cs
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\Views\AuthConView.g.cs
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\Views\DirectConView.g.cs
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\Views\HomeView.g.cs
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\Views\AboutView.baml
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\Views\AuthConView.baml
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\Views\DirectConView.baml
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\Views\HomeView.baml
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\Views\RunLogView.g.cs
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\Views\RunLogView.baml
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Debug\GeneratedInternalTypeHelper.g.cs
