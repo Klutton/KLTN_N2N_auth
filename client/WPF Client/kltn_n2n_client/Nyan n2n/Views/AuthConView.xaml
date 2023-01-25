@@ -3,10 +3,113 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:Nyan_n2n.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock FontSize="80" Text="AuthCon"/>
+    <Grid Margin="30,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="通过服务器自动获取节点" Style="{StaticResource MaterialDesignHeadline6TextBlock}" Padding="10"/>
+
+        <!--账号密码输入-->
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="20,20">
+            <TextBox
+                Margin="0,10"
+                Width="250"
+                x:Name="ServerAddr"
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                materialDesign:HintAssist.Hint="主服务器域名或ip（含端口）"/>
+
+            <TextBox
+                Margin="0,30,0,10"
+                Width="250"
+                x:Name="Username"
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                materialDesign:HintAssist.Hint="账号"/>
+
+            <PasswordBox
+                Margin="0,10,0,50"
+                Width="250"
+                x:Name="Password"
+                Style="{StaticResource MaterialDesignFilledRevealPasswordBox}"
+                materialDesign:HintAssist.Hint="密码"/>
+
+            <Button
+                Margin="0,0,30,0"
+                Width="70"
+                Height="30"
+                Click="Connect"
+                materialDesign:ButtonAssist.CornerRadius="5">
+                <TextBlock Text="连接" />
+            </Button>
+        </StackPanel>
+
+        <Border Grid.Row="1" Margin="20,0" Grid.Column="1" BorderThickness="1" BorderBrush="AntiqueWhite" Opacity="0.4"/>
+
+        <!--获取服务器列表以及连接-->
+        <StackPanel Grid.Row="1" Grid.Column="2" Margin="20,0" Orientation="Vertical">
+            <!--连接状态-->
+            <StackPanel Margin="0,3" Orientation="Horizontal">
+                <TextBlock Text="状态:"/>
+                <Border BorderThickness="5"/>
+                <TextBlock Text="已连接（占位符）" Foreground="Green"/>
+            </StackPanel>
+            
+            <StackPanel Margin="0,3" Orientation="Horizontal">
+                <TextBlock Text="服务器:"/>
+                <Border BorderThickness="5"/>
+                <TextBlock Text="Kltn-Tech（占位符）" Foreground="Green"/>
+            </StackPanel>
+            
+            <StackPanel Margin="0,3" Orientation="Horizontal">
+                <TextBlock Text="服务器信息:"/>
+                <Border BorderThickness="5"/>
+                <TextBlock Text="欢迎使用Kltn-Tech（占位符）" Foreground="Green"/>
+            </StackPanel>
+
+            <Border BorderThickness="10"/>
+
+            <!--可用节点列表-->
+            <TextBlock Margin="0,10" Text="可用节点："/>
+            <DockPanel MinWidth="300" MaxHeight="150">
+                <ListBox
+                    IsEnabled="{Binding IsChecked, ElementName=EnableListBox}"
+                    Style="{StaticResource MaterialDesignListBox}">
+                    <ListBox.Resources>
+                    <Style TargetType="ScrollBar" BasedOn="{StaticResource MaterialDesignScrollBarMinimal}" />
+                    </ListBox.Resources>
+                    <TextBlock Text="Plain" />
+                    <TextBlock Text="Plain" />
+                    <TextBlock Text="Plain" />
+                    <TextBlock Text="Plain" />
+                    <TextBlock Text="Plain" />
+                    <TextBlock Text="Plain" />
+                    <TextBlock Text="Plain" />
+                    <TextBlock Text="Plain" />
+                    <TextBlock Text="Plain" />
+                    <TextBlock Text="Plain" />
+                </ListBox>
+            </DockPanel>
+            
+            <!--连接-->
+            <Button
+                Margin="0,10,0,0"
+                Width="70"
+                Height="30"
+                Click="Connect"
+                materialDesign:ButtonAssist.CornerRadius="5">
+                <TextBlock Text="连接" />
+            </Button>
+        </StackPanel>
     </Grid>
 </UserControl>

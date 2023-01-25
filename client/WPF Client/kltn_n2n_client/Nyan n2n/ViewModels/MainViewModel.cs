@@ -24,18 +24,22 @@ namespace Nyan_n2n.ViewModels
                 Message = "Nyan 🐱",
                 Stop = true
             };
-            _eventAggregator.GetEvent<RunLogEvent>().Publish(_log);
+            //_eventAggregator.GetEvent<RunLogEvent>().Publish(_log);
             MenuBars = new ObservableCollection<MenuBar>();
             CreateMenuBar();
             NavigateCommand = new DelegateCommand<MenuBar>(Navigate);
             this._regionManager = regionManager;
         }
-
+        private bool _init = false;
         private void Navigate(MenuBar obj)
         {
             if (obj == null || string.IsNullOrWhiteSpace(obj.Namespace))
                 return;
-
+            if (!_init)
+            {
+                _regionManager.Regions[PrismManager.MainViewRegionName].RequestNavigate("RunLogView");
+                _init = true;
+            }
             _regionManager.Regions[PrismManager.MainViewRegionName].RequestNavigate(obj.Namespace);
         }
 

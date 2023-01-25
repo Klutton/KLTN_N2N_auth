@@ -20,15 +20,17 @@ namespace Nyan_n2n.Common.EdgeManage
             get { return _disposed; }
             set { _disposed = value; }
         }
+        private string _args;
         public EdgeManager(string args, IEventAggregator ea)
         {
+            _args = args;
             _eventAggregator = ea;
             _info = new ProcessStartInfo()
             {
                 FileName = _file,
-                UseShellExecute= false,
-                RedirectStandardOutput = true,
-                CreateNoWindow = true,
+                UseShellExecute = true,
+                Verb = "runas",
+                WindowStyle = ProcessWindowStyle.Normal,
                 Arguments = args
             };
         }
@@ -36,11 +38,17 @@ namespace Nyan_n2n.Common.EdgeManage
         {
             if (_disposed) return;
             _disposed = true;
+            RunLog _log = new RunLog()
+            {
+                Message = $"正在尝试创建连接...\n使用参数{_args}",
+                Stop = false
+            };
+            _eventAggregator.GetEvent<RunLogEvent>().Publish(_log);
             Task.Run(() =>
             {
                 _edge = new Process();
                 _edge.StartInfo = _info;
-                _edge.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
+                /*_edge.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
                 {
                     // Prepend line numbers to each line of the output.
                     if (!String.IsNullOrEmpty(e.Data))
@@ -52,9 +60,12 @@ namespace Nyan_n2n.Common.EdgeManage
                         };
                         _eventAggregator.GetEvent<RunLogEvent>().Publish(_log);
                     }
-                });
+                });*/
                 _edge.Start();
-                _edge.BeginOutputReadLine();
+                _edge.WaitForExit();
+                _log.Message = "程序退出（若闪退请检查参数完整性以及文件完整性）";
+                _eventAggregator.GetEvent<RunLogEvent>().Publish(_log);
+                //_edge.BeginOutputReadLine();
             });
         }
         public void Stop()

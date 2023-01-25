@@ -24,5 +24,9 @@ namespace Nyan_n2n.Views
         {
             InitializeComponent();
         }
+        private void Connect(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

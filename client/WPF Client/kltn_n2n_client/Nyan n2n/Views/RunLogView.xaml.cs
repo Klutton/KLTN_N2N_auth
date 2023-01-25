@@ -26,7 +26,11 @@ namespace Nyan_n2n.Views
             InitializeComponent();
             LayoutUpdated += (s, e) =>
             {
-                Log.Height = ActualHeight - 80;
+                try
+                {
+                    Log.Height = ActualHeight - 80;
+                }
+                catch { }
             };
         }
     }

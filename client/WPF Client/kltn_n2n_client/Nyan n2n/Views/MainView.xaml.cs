@@ -23,7 +23,6 @@ namespace Nyan_n2n.Views
         public MainView()
         {
             InitializeComponent();
-
             btnMin.Click += (s, e) => { this.WindowState = WindowState.Minimized; };
             btnMax.Click += (s, e) =>
             {
