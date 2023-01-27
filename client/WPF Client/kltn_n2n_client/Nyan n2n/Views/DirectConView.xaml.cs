@@ -34,6 +34,7 @@ namespace Nyan_n2n.Views
         private void Connect(object sender, RoutedEventArgs e)
         {
             Disconnect(null,null);
+            ConUpdate();
             EdgeArgs preArges = new EdgeArgs(this.Ip.Text, this.Port.Text, this.Community.Text);
             string args = preArges.GenerateArgs();
             _manager = new EdgeManager(args, _eventAggregator);
@@ -41,10 +42,21 @@ namespace Nyan_n2n.Views
         }
         private void Disconnect(object sender, RoutedEventArgs e)
         {
+            DisConUpdate();
             if (_manager != null)
             {
                 _manager.Stop();
             }
+        }
+        private void ConUpdate()
+        {
+            status.Text = "连接";
+            status.Foreground = Brushes.Green;
+        }
+        private void DisConUpdate()
+        {
+            status.Text = "断开";
+            status.Foreground = Brushes.Red;
         }
     }
 }

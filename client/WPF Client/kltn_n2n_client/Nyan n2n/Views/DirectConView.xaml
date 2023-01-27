@@ -60,7 +60,7 @@
                 </Binding>
             </TextBox>
 
-            <StackPanel Margin="215,0,0,0" Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button
                     Margin="0,0,30,0"
                     Width="70"
@@ -77,6 +77,9 @@
                     Style="{StaticResource MaterialDesignFlatSecondaryLightBgButton}">
                     <TextBlock Text="停止" />
                 </Button>
+                <Border BorderThickness="30"/>
+                <TextBlock x:Name="status" Text="断开" Foreground="Red">
+                </TextBlock>
             </StackPanel>
 
         </StackPanel>

@@ -24,7 +24,8 @@ namespace Nyan_n2n.Common.Models
             args += "-l " + Host.ToString() + ":" + Port.ToString();
             args += " -c " + Community;
             //args += " -d " + EdgeName;
-            args += " -k " + RandomString(16);
+            //args += " -k " + RandomString(16);
+            //不要随便加 -k
             return args;
         }
         private string RandomString(int length)

@@ -7,7 +7,6 @@ import bcrypt
 import psycopg2
 import redis
 from flask import Flask, request, make_response, session, redirect, jsonify
-from flask_login import LoginManager
 
 import settings
 
@@ -31,7 +30,6 @@ except Exception as e:
 # flask config
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
-login_manager = LoginManager()
 
 
 def new_code(seconds: int = 60 * 60 * 72, expire: int = 60 * 60 * 24 * 30):  # 默认有效时间为72小时
@@ -87,11 +85,6 @@ def check_login(u: str, p: str):
         return False
 
 
-def get_session(u: str, p: str):
-    if check_login(u,p):
-        session['username'] =
-
-
 '''def auth(name: str):
     if cur.execute()'''
 
@@ -143,7 +136,7 @@ def login():
                     username = request.form['username']
                     password = request.form['password']
                     if check_login(username, password):
-                        get_session(username, password)
+                        session['username'] = username
                         return f'欢迎，{username}<p><a href=/>返回<a>'
                     else:
                         return '账号密码错误<p><a href="/n2n_login">返回<a>'
@@ -201,9 +194,10 @@ def register():
 def connect():
     if request.method == 'POST':
         if check_format(request.form):
-            if check_login(request.form['username'], request.form['password']):
-                if request.form['key'] == settings.config['key']:
-                    return jsonify({"port": settings.config['port']})
+            if request.form['key'] == settings.config['key']:
+                if check_login(request.form['username'], request.form['password']):
+                    return jsonify({"server_name": settings.config['server_name']
+                                       , "server_info": settings.config['server_info'], "servers":settings.config["servers"]})
 
     else:
         return '404'
@@ -235,4 +229,3 @@ def get_code():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
-    # login_manager.init_app(app)

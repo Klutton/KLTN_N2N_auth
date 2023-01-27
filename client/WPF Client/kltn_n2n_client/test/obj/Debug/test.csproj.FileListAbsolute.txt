@@ -1,0 +1,16 @@
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\test\obj\Debug\test.csproj.AssemblyReference.cache
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\test\obj\Debug\test.csproj.SuggestedBindingRedirects.cache
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\test\obj\Debug\MainWindow.g.cs
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\test\obj\Debug\App.g.cs
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\test\obj\Debug\test_MarkupCompile.cache
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\test\obj\Debug\test_MarkupCompile.lref
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\test\bin\Debug\test.exe.config
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\test\bin\Debug\test.exe
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\test\bin\Debug\test.pdb
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\test\obj\Debug\MainWindow.baml
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\test\obj\Debug\test.g.resources
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\test\obj\Debug\test.Properties.Resources.resources
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\test\obj\Debug\test.csproj.GenerateResource.cache
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\test\obj\Debug\test.csproj.CoreCompileInputs.cache
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\test\obj\Debug\test.exe
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\test\obj\Debug\test.pdb

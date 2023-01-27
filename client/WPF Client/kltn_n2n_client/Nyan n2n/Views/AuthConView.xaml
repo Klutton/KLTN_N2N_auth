@@ -102,14 +102,25 @@
             </DockPanel>
             
             <!--连接-->
-            <Button
-                Margin="0,10,0,0"
+            <StackPanel Margin="30,10" Orientation="Horizontal">
+                <Button
+                Margin="10,0"
                 Width="70"
                 Height="30"
                 Click="Connect"
                 materialDesign:ButtonAssist.CornerRadius="5">
-                <TextBlock Text="连接" />
-            </Button>
+                    <TextBlock Text="启动" />
+                </Button>
+                <Button
+                Margin="10,0"
+                Width="70"
+                Height="30"
+                Click="Connect"
+                Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                materialDesign:ButtonAssist.CornerRadius="5">
+                    <TextBlock Text="停止" />
+                </Button>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>
