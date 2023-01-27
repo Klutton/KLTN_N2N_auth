@@ -129,6 +129,7 @@
     <Compile Include="Common\Models\EdgeArgs.cs" />
     <Compile Include="Common\Models\LoginRes.cs" />
     <Compile Include="Common\Models\RunLog.cs" />
+    <Compile Include="Common\Models\RunStatus.cs" />
     <Compile Include="Common\ValidationRules\ValidateCommunity.cs" />
     <Compile Include="Common\ValidationRules\ValidateIp.cs" />
     <Compile Include="Common\ValidationRules\ValidatePort.cs" />

@@ -15,60 +15,67 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Text="直接连接到n2n超级节点" Style="{StaticResource MaterialDesignHeadline6TextBlock}" Padding="10"/>
-        <StackPanel Grid.Row="1" Margin="0,20">
-            <TextBox
-                Margin="0,10"
-                Width="250"
-                x:Name="Ip"
-                Style="{StaticResource MaterialDesignFilledTextBox}"
-                materialDesign:HintAssist.Hint="服务器ip地址">
-                <Binding
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+            <Border BorderThickness="20"/>
+            <StackPanel Grid.Row="1" Margin="0,20" Orientation="Vertical">
+                <Border BorderThickness="20"/>
+                <TextBox
+                    Margin="0,20"
+                    Width="250"
+                    x:Name="Ip"
+                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                    materialDesign:HintAssist.Hint="服务器ip地址">
+                    <!--<Binding
                         Path="Ip"
                         UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <Rules:ValidateIp ValidatesOnTargetUpdated="True" />
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox>
-            <TextBox
-                Margin="0,10"
-                Width="250"
-                x:Name="Port"
-                Style="{StaticResource MaterialDesignFilledTextBox}"
-                materialDesign:HintAssist.Hint="服务器端口">
-                <Binding
+                        <Binding.ValidationRules>
+                            <Rules:ValidateIp ValidatesOnTargetUpdated="True" />
+                        </Binding.ValidationRules>
+                    </Binding>-->
+                </TextBox>
+                <TextBox
+                    Margin="0,20"
+                    Width="250"
+                    x:Name="Port"
+                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                    materialDesign:HintAssist.Hint="服务器端口">
+                    <!--<Binding
                         Path="Ip"
                         UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <Rules:ValidatePort ValidatesOnTargetUpdated="True" />
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox>
+                        <Binding.ValidationRules>
+                            <Rules:ValidatePort ValidatesOnTargetUpdated="True" />
+                        </Binding.ValidationRules>
+                    </Binding>-->
+                </TextBox>
 
-            <TextBox
-                Margin="0,30,0,50"
-                Width="250"
-                x:Name="Community"
-                Style="{StaticResource MaterialDesignFilledTextBox}"
-                materialDesign:HintAssist.Hint="群组名，默认为NETWORKS">
-                <Binding
+                <TextBox
+                    Margin="0,30,0,50"
+                    Width="250"
+                    x:Name="Community"
+                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                    materialDesign:HintAssist.Hint="群组名，默认为NETWORKS">
+                    <!--<Binding
                         Path="Ip"
                         UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <Rules:ValidateCommunity ValidatesOnTargetUpdated="True" />
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox>
+                        <Binding.ValidationRules>
+                            <Rules:ValidateCommunity ValidatesOnTargetUpdated="True" />
+                        </Binding.ValidationRules>
+                    </Binding>-->
+                </TextBox>
+            </StackPanel>
+            
+            <Border BorderThickness="25"/>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Border BorderThickness="30"/>
                 <Button
-                    Margin="0,0,30,0"
                     Width="70"
                     Height="30"
                     Click="Connect"
                     materialDesign:ButtonAssist.CornerRadius="5">
                     <TextBlock Text="直连" />
                 </Button>
+                <Border BorderThickness="15"/>
                 <Button
                     Width="70"
                     Height="30"
@@ -77,11 +84,25 @@
                     Style="{StaticResource MaterialDesignFlatSecondaryLightBgButton}">
                     <TextBlock Text="停止" />
                 </Button>
-                <Border BorderThickness="30"/>
-                <TextBlock x:Name="status" Text="断开" Foreground="Red">
-                </TextBlock>
+                <Border BorderThickness="10"/>
+                <TextBlock Margin="20,0" x:Name="status" Text="断开" Foreground="Red"/>
             </StackPanel>
 
+            <Border BorderThickness="20"/>
+
+            <StackPanel MaxWidth="170"  MaxHeight="250" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBox
+                    Width="170"
+                    Height="250"
+                    VerticalAlignment="Top"
+                    AcceptsReturn="True"
+                    IsEnabled="True" 
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    x:Name="Log"
+                    Text="占位符：将来在此处放置一些参数显示等辅助功能，现在可以复制服务器地址过来暂时存放"
+                    TextWrapping="Wrap"
+                    VerticalScrollBarVisibility="Auto" />
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

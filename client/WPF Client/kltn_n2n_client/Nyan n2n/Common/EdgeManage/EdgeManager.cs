@@ -61,10 +61,15 @@ namespace Nyan_n2n.Common.EdgeManage
                     }
                 });
                 _edge.Start();
+                RunStatus status = new RunStatus(true);
+                _eventAggregator.GetEvent<RunStatusEvent>().Publish(status);
                 _edge.BeginOutputReadLine();
                 _edge.WaitForExit();
                 _log.Message = "程序退出（若闪退请检查参数完整性以及文件完整性，后续版本会在启动前检查参数）";
                 _eventAggregator.GetEvent<RunLogEvent>().Publish(_log);
+
+                status.IsRunning = false;
+                _eventAggregator.GetEvent<RunStatusEvent>().Publish(status);
                 _edge.Dispose();
             });
         }

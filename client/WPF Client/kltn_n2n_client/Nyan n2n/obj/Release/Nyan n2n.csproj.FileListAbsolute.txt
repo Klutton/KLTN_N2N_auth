@@ -46,3 +46,5 @@ C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj
 C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Release\Nyan n2n.csproj.CopyComplete
 C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Release\Nyan n2n.exe
 C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\obj\Release\Nyan n2n.pdb
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Release\Newtonsoft.Json.dll
+C:\Users\86153\Documents\N2N_auth\client\WPF Client\kltn_n2n_client\Nyan n2n\bin\Release\Newtonsoft.Json.xml
