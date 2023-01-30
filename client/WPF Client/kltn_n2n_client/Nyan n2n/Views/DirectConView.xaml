@@ -14,7 +14,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="直接连接到n2n超级节点" Style="{StaticResource MaterialDesignHeadline6TextBlock}" Padding="10"/>
+        <TextBlock Grid.Row="0" Text="直接连接到n2n超级节点" FontSize="28"  Style="{StaticResource MiLanFont}" Padding="10"/>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
             <Border BorderThickness="20"/>
             <StackPanel Grid.Row="1" Margin="0,20" Orientation="Vertical">
@@ -24,6 +24,8 @@
                     Width="250"
                     x:Name="Ip"
                     Style="{StaticResource MaterialDesignFilledTextBox}"
+                    FontFamily="./Fonts/#小米兰亭 Pro VF"
+                    FontSize="13"
                     materialDesign:HintAssist.Hint="服务器ip地址">
                     <!--<Binding
                         Path="Ip"
@@ -38,7 +40,9 @@
                     Width="250"
                     x:Name="Port"
                     Style="{StaticResource MaterialDesignFilledTextBox}"
-                    materialDesign:HintAssist.Hint="服务器端口">
+                    materialDesign:HintAssist.Hint="服务器端口"
+                    FontSize="14"
+                    FontFamily="./Fonts/#小米兰亭 Pro VF">
                     <!--<Binding
                         Path="Ip"
                         UpdateSourceTrigger="PropertyChanged">
@@ -53,7 +57,9 @@
                     Width="250"
                     x:Name="Community"
                     Style="{StaticResource MaterialDesignFilledTextBox}"
-                    materialDesign:HintAssist.Hint="群组名，默认为NETWORKS">
+                    FontFamily="./Fonts/#小米兰亭 Pro VF"
+                    FontSize="14"
+                    materialDesign:HintAssist.Hint="群组名，默认为NETWORKS" >
                     <!--<Binding
                         Path="Ip"
                         UpdateSourceTrigger="PropertyChanged">
@@ -63,7 +69,7 @@
                     </Binding>-->
                 </TextBox>
             </StackPanel>
-            
+
             <Border BorderThickness="25"/>
 
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
@@ -73,7 +79,9 @@
                     Height="30"
                     Click="Connect"
                     materialDesign:ButtonAssist.CornerRadius="5">
-                    <TextBlock Text="直连" />
+                    <TextBlock Text="直连" 
+                               FontSize="14"
+                               Style="{StaticResource MiLanFont}" FontFamily="Microsoft YaHei UI" />
                 </Button>
                 <Border BorderThickness="15"/>
                 <Button
@@ -81,11 +89,13 @@
                     Height="30"
                     materialDesign:ButtonAssist.CornerRadius="5"
                     Click="Disconnect"
-                    Style="{StaticResource MaterialDesignFlatSecondaryLightBgButton}">
-                    <TextBlock Text="停止" />
+                    Style="{StaticResource MaterialDesignFlatSecondaryLightBgButton}" >
+                    <TextBlock Text="停止"
+                               FontSize="14"
+                               Style="{StaticResource MiLanFont}" FontFamily="Microsoft YaHei UI" />
                 </Button>
                 <Border BorderThickness="10"/>
-                <TextBlock Margin="20,0" x:Name="status" Text="断开" Foreground="Red"/>
+                <TextBlock Margin="20,0" x:Name="status" Text="断开" Foreground="Red" Style="{StaticResource MiLanFont}" />
             </StackPanel>
 
             <Border BorderThickness="20"/>
@@ -101,7 +111,7 @@
                     x:Name="Log"
                     Text="占位符：将来在此处放置一些参数显示等辅助功能，现在可以复制服务器地址过来暂时存放"
                     TextWrapping="Wrap"
-                    VerticalScrollBarVisibility="Auto" />
+                    VerticalScrollBarVisibility="Auto" FontFamily="MI Lan Pro VF" FontSize="14" />
             </StackPanel>
         </StackPanel>
     </Grid>

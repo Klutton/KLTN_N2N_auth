@@ -9,7 +9,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Margin="30,10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
@@ -19,7 +19,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="通过服务器自动获取节点" Style="{StaticResource MaterialDesignHeadline6TextBlock}" Padding="10"/>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="通过服务器自动获取节点" Style="{StaticResource MiLanFont}" FontSize="28"/>
 
         <!--账号密码输入-->
         <StackPanel Grid.Row="1" Grid.Column="0" Margin="20,20">
@@ -28,6 +28,8 @@
                 Width="250"
                 x:Name="ServerAddr"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
+                FontFamily="./Fonts/#小米兰亭 Pro VF"
+                FontSize="13"
                 materialDesign:HintAssist.Hint="主服务器域名或ip（含端口）"/>
 
             <TextBox
@@ -35,12 +37,16 @@
                 Width="250"
                 x:Name="Username"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
+                FontFamily="./Fonts/#小米兰亭 Pro VF"
+                FontSize="13"
                 materialDesign:HintAssist.Hint="账号"/>
 
             <PasswordBox
                 Margin="0,10,0,50"
                 Width="250"
                 x:Name="Password"
+                FontFamily="./Fonts/#小米兰亭 Pro VF"
+                FontSize="13"
                 Style="{StaticResource MaterialDesignFilledRevealPasswordBox}"
                 materialDesign:HintAssist.Hint="密码"/>
 
@@ -49,7 +55,8 @@
                 Width="70"
                 Height="30"
                 Click="Connect"
-                materialDesign:ButtonAssist.CornerRadius="5">
+                FontSize="14"
+                materialDesign:ButtonAssist.CornerRadius="5" FontFamily="Microsoft YaHei UI">
                 <TextBlock Text="连接" />
             </Button>
         </StackPanel>
@@ -60,44 +67,42 @@
         <StackPanel Grid.Row="1" Grid.Column="2" Margin="20,0" Orientation="Vertical">
             <!--连接状态-->
             <StackPanel Margin="0,3" Orientation="Horizontal">
-                <TextBlock Text="状态:"/>
+                <TextBlock Style="{StaticResource MiLanFont}" Text="状态:"/>
                 <Border BorderThickness="5"/>
-                <TextBlock Text="已连接（占位符）" Foreground="Green"/>
+                <TextBlock Style="{StaticResource MiLanFont}" Text="已连接（占位符）" Foreground="Green"/>
             </StackPanel>
             
             <StackPanel Margin="0,3" Orientation="Horizontal">
-                <TextBlock Text="服务器:"/>
+                <TextBlock Style="{StaticResource MiLanFont}" Text="服务器:"/>
                 <Border BorderThickness="5"/>
-                <TextBlock Text="Kltn-Tech（占位符）" Foreground="Green"/>
+                <TextBlock Style="{StaticResource MiLanFont}" Text="Kltn-Tech（占位符）" Foreground="Green"/>
             </StackPanel>
             
             <StackPanel Margin="0,3" Orientation="Horizontal">
-                <TextBlock Text="服务器信息:"/>
+                <TextBlock Style="{StaticResource MiLanFont}" Text="服务器信息:"/>
                 <Border BorderThickness="5"/>
-                <TextBlock Text="欢迎使用Kltn-Tech（占位符）" Foreground="Green"/>
+                <TextBlock Style="{StaticResource MiLanFont}" Text="欢迎使用Kltn-Tech（占位符）" Foreground="Green"/>
             </StackPanel>
 
             <Border BorderThickness="10"/>
 
             <!--可用节点列表-->
-            <TextBlock Margin="0,10" Text="可用节点："/>
+            <TextBlock Margin="0,10" Style="{StaticResource MiLanFont}" Text="可用节点："/>
             <DockPanel MinWidth="300" MaxHeight="150">
                 <ListBox
                     IsEnabled="{Binding IsChecked, ElementName=EnableListBox}"
+                    MinHeight="150"
                     Style="{StaticResource MaterialDesignListBox}">
                     <ListBox.Resources>
                     <Style TargetType="ScrollBar" BasedOn="{StaticResource MaterialDesignScrollBarMinimal}" />
                     </ListBox.Resources>
-                    <TextBlock Text="Plain" />
-                    <TextBlock Text="Plain" />
-                    <TextBlock Text="Plain" />
-                    <TextBlock Text="Plain" />
-                    <TextBlock Text="Plain" />
-                    <TextBlock Text="Plain" />
-                    <TextBlock Text="Plain" />
-                    <TextBlock Text="Plain" />
-                    <TextBlock Text="Plain" />
-                    <TextBlock Text="Plain" />
+                    <TextBlock Style="{StaticResource MiLanFont}" Text="Plain" />
+                    <TextBlock Style="{StaticResource MiLanFont}" Text="Plain" />
+                    <TextBlock Style="{StaticResource MiLanFont}" Text="Plain" />
+                    <TextBlock Style="{StaticResource MiLanFont}" Text="Plain" />
+                    <TextBlock Style="{StaticResource MiLanFont}" Text="Plain" />
+                    <TextBlock Style="{StaticResource MiLanFont}" Text="Plain" />
+                    <TextBlock Style="{StaticResource MiLanFont}" Text="Plain" />
                 </ListBox>
             </DockPanel>
             

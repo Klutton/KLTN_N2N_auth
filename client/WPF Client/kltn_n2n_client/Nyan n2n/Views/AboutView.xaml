@@ -8,8 +8,10 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Margin="20,0">
         <StackPanel>
-            <TextBlock FontSize="80" Text="About"/>
-            <TextBlock Text="Version: 1.1.0.0"/>
+            <TextBlock Style="{StaticResource MiLanFont}" FontSize="80" Text="About"/>
+            <TextBlock Style="{StaticResource MiLanFont}" Text="Version: 1.1.0.0"/>
+            <TextBlock Style="{StaticResource MiLanFont}" Text="关于版本的说明：版本的敲定其实是不严谨的，而且没有beta alpha demo之类的前缀，纯属从项目的建立开始记录"/>
+            <TextBlock Style="{StaticResource MiLanFont}" Foreground="Cyan" Text="投放建议和bug反馈请发送邮件到 kluttonm@outlook.com"/>
         </StackPanel>
     </Grid>
 </UserControl>

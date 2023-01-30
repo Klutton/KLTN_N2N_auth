@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="日志" Style="{StaticResource MaterialDesignHeadline6TextBlock}" Padding="10"/>
+        <TextBlock Grid.Row="0" Text="日志" Style="{StaticResource MiLanFont}" FontSize="18"/>
         <StackPanel Grid.Row="1">
             <TextBox
                 VerticalAlignment="Top"
@@ -23,6 +23,7 @@
                 x:Name="Log"
                 Text="{Binding Log}"
                 TextWrapping="Wrap"
+                FontFamily="./Fonts/#小米兰亭 Pro VF"
                 VerticalScrollBarVisibility="Auto" />
         </StackPanel>
     </Grid>

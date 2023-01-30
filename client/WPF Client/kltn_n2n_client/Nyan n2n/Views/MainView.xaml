@@ -44,7 +44,7 @@
                             <DataTemplate>
                                 <StackPanel Background="Transparent" Orientation="Horizontal" MinHeight="30">
                                     <materialDesign:PackIcon Margin="17,15" Kind="{Binding Icon}" />
-                                    <TextBlock Margin="-2,15" Text="{Binding Title}" />
+                                    <TextBlock Margin="-2,15" Text="{Binding Title}" Style="{StaticResource MiLanFont}" />
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>

@@ -8,9 +8,9 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <materialDesign:BundledTheme BaseTheme="Inherit"
-                                     ColorAdjustment="{materialDesign:ColorAdjustment}"
-                                     PrimaryColor="DeepPurple"
-                                     SecondaryColor="Lime" />
+                                             ColorAdjustment="{materialDesign:ColorAdjustment}"
+                                             PrimaryColor="DeepPurple"
+                                             SecondaryColor="Lime" />
                 <!--<materialDesign:BundledTheme BaseTheme="Dark" 
                                              PrimaryColor="DeepPurple"
                                              SecondaryColor="Lime" />-->
@@ -44,6 +44,10 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
+            </Style>
+            <Style x:Key="MiLanFont" TargetType="TextBlock">
+                <Setter Property="TextElement.FontFamily" Value="./Fonts/#小米兰亭 Pro VF"/>
+                <!--Setter Property="TextElement.FontWeight" Value="Light"/-->
             </Style>
         </ResourceDictionary>
     </Application.Resources>

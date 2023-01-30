@@ -27,9 +27,10 @@ namespace Nyan_n2n.Common.EdgeManage
             _eventAggregator = ea;
             _info = new ProcessStartInfo("edge.exe")
             {
-                UseShellExecute = false,
+                UseShellExecute = true,
                 CreateNoWindow = true,
-                RedirectStandardOutput = true,
+                WindowStyle = ProcessWindowStyle.Minimized,
+                RedirectStandardOutput = false,
                 Arguments = args,
             };
         }
@@ -47,7 +48,7 @@ namespace Nyan_n2n.Common.EdgeManage
             {
                 _edge = new Process();
                 _edge.StartInfo = _info;
-                _edge.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
+                /*_edge.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
                 {
                     // Prepend line numbers to each line of the output.
                     if (!String.IsNullOrEmpty(e.Data))
@@ -59,11 +60,11 @@ namespace Nyan_n2n.Common.EdgeManage
                         };
                         _eventAggregator.GetEvent<RunLogEvent>().Publish(_log);
                     }
-                });
+                });*/
                 _edge.Start();
                 RunStatus status = new RunStatus(true);
                 _eventAggregator.GetEvent<RunStatusEvent>().Publish(status);
-                _edge.BeginOutputReadLine();
+                //_edge.BeginOutputReadLine();
                 _edge.WaitForExit();
                 _log.Message = "程序退出（若闪退请检查参数完整性以及文件完整性，后续版本会在启动前检查参数）";
                 _eventAggregator.GetEvent<RunLogEvent>().Publish(_log);

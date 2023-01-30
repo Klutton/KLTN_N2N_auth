@@ -1,4 +1,5 @@
 ﻿using DryIoc;
+using Nyan_n2n.Common;
 using Nyan_n2n.ViewModels;
 using Nyan_n2n.Views;
 using Prism.DryIoc;
@@ -21,6 +22,16 @@ namespace Nyan_n2n
         protected override Window CreateShell()
         {
             return Container.Resolve<MainView>();
+        }
+        protected override void OnInitialized()
+        {
+            var service = App.Current.MainWindow.DataContext as IConfigureService;
+            service?.Configure();
+            base.OnInitialized();
+        }
+        protected override void OnExit(ExitEventArgs e)
+        {
+            base.OnExit(e);
         }
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
