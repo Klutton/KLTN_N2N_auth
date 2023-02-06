@@ -10,11 +10,11 @@ namespace Nyan_n2n.Common.Models
     public class RunLogEvent : PubSubEvent<RunLog> { }
     public class RunLog
     {
-        private bool _stop = false;
-        public bool Stop
+        private bool _start = false;
+        public bool Start
         {
-            get { return _stop; }
-            set { _stop = value; }
+            get { return _start; }
+            set { _start = value; }
         }
         private string _message;
         public string Message

@@ -1,4 +1,5 @@
 ﻿using MaterialDesignThemes.Wpf;
+using Nyan_n2n.Common.EdgeManage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,10 @@ namespace Nyan_n2n.Views
                     this.WindowState = WindowState.Maximized;
                 else this.WindowState = WindowState.Normal;
             };
-            btnClose.Click += (s, e) => { this.Close(); };
+            btnClose.Click += (s, e) => {
+                EdgeManager.Stop();
+                this.Close(); 
+            };
 
             guideLine.MouseMove += (s, e) =>
             {

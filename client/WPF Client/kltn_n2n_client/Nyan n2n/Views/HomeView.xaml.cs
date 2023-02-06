@@ -23,6 +23,20 @@ namespace Nyan_n2n.Views
         public HomeView()
         {
             InitializeComponent();
+            LayoutUpdated += (s, e) =>
+            {
+                try
+                {
+                    Viewer.Width = ActualWidth - 40;
+                    Viewer.Height = ActualHeight - 40;
+                }
+                catch { }
+            };
+        }
+
+        private void Doc(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("IExplore.exe", "https://www.cngame.wiki/Nyan-n2n-document");
         }
     }
 }

@@ -9,5 +9,7 @@ namespace Nyan_n2n.Common
     public interface IConfigureService
     {
         void Configure();
+
+        void ShutDown();
     }
 }

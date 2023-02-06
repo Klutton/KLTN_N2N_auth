@@ -1,4 +1,5 @@
 ﻿using Nyan_n2n.Common;
+using Nyan_n2n.Common.EdgeManage;
 using Nyan_n2n.Common.Models;
 using Nyan_n2n.Extensions;
 using Prism.Commands;
@@ -9,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,12 +22,7 @@ namespace Nyan_n2n.ViewModels
         public MainViewModel(IRegionManager regionManager, IEventAggregator ea)
         {
             _eventAggregator = ea;
-            RunLog _log = new RunLog()
-            {
-                Message = "Nyan 🐱",
-                Stop = true
-            };
-            //_eventAggregator.GetEvent<RunLogEvent>().Publish(_log);
+            EdgeManager.SetEventAggregator(ea);
             MenuBars = new ObservableCollection<MenuBar>();
             NavigateCommand = new DelegateCommand<MenuBar>(Navigate);
             this._regionManager = regionManager;
@@ -53,6 +50,7 @@ namespace Nyan_n2n.ViewModels
             MenuBars.Add(new MenuBar() { Icon = "Home", Title = "主页", Namespace = "HomeView" });
             MenuBars.Add(new MenuBar() { Icon = "TransitConnectionHorizontal", Title = "直连", Namespace = "DirectConView" });
             MenuBars.Add(new MenuBar() { Icon = "TransitConnectionVariant", Title = "验证连接", Namespace = "AuthConView" });
+            MenuBars.Add(new MenuBar() { Icon = "GamepadVariantOutline", Title = "CnGame节点", Namespace = "CnGameSponsorView" });
             MenuBars.Add(new MenuBar() { Icon = "NoteTextOutline", Title = "日志", Namespace = "RunLogView" });
             MenuBars.Add(new MenuBar() { Icon = "Account", Title = "关于", Namespace = "AboutView" });
         }
@@ -64,6 +62,11 @@ namespace Nyan_n2n.ViewModels
             CreateMenuBar();
             _regionManager.Regions[PrismManager.MainViewRegionName].RequestNavigate("RunLogView");
             _regionManager.Regions[PrismManager.MainViewRegionName].RequestNavigate("HomeView");
+        }
+
+        public void ShutDown()
+        {
+            EdgeManager.Stop();
         }
     }
 }

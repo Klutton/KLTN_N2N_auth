@@ -19,18 +19,20 @@ namespace Nyan_n2n
     /// </summary>
     public partial class App : PrismApplication
     {
+        IConfigureService service;
         protected override Window CreateShell()
         {
             return Container.Resolve<MainView>();
         }
         protected override void OnInitialized()
         {
-            var service = App.Current.MainWindow.DataContext as IConfigureService;
+            service = App.Current.MainWindow.DataContext as IConfigureService;
             service?.Configure();
             base.OnInitialized();
         }
         protected override void OnExit(ExitEventArgs e)
         {
+            service?.ShutDown();
             base.OnExit(e);
         }
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -39,6 +41,7 @@ namespace Nyan_n2n
             containerRegistry.RegisterForNavigation<AuthConView, AuthConViewModel>();
             containerRegistry.RegisterForNavigation<RunLogView, RunLogViewModel>();
             containerRegistry.RegisterForNavigation<DirectConView, DirectConViewModel>();
+            containerRegistry.RegisterForNavigation<CnGameSponsorView, CnGameSponsorModel>();
             containerRegistry.RegisterForNavigation<HomeView, HomeViewModel>();
         }
     }

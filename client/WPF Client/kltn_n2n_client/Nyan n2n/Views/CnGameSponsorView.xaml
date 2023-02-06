@@ -1,0 +1,132 @@
+﻿<UserControl x:Class="Nyan_n2n.Views.CnGameSponsorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:Nyan_n2n.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="30,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="由CnGame赞助的免费节点" Style="{StaticResource MiLanFont}" FontSize="28"/>
+
+        <ScrollViewer Grid.Row="1" Grid.Column="0" MaxWidth="300" VerticalScrollBarVisibility="Auto">
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Border BorderThickness="20"/>
+                <TextBlock TextWrapping="Wrap"
+                           LineHeight="5"
+                           HorizontalAlignment="Left"
+                           Style="{StaticResource MiLanFont}">
+                    <Span Foreground="MediumSeaGreen">右侧节点是由CnGame主持的免费节点</Span><LineBreak/>
+                    Cngame是一家为玩家提供游戏资讯的维基网站，主持了一部分免费节点，打赏CnGame以感谢其免费支持请点击下方按钮跳转<LineBreak/>
+                    <LineBreak/>如想要了解更多关于软件作者的信息，请移步到关于页面
+                </TextBlock>
+
+                <Border BorderThickness="20"/>
+
+                <Button
+                    Width="100"
+                    IsEnabled="True"
+                    Style="{StaticResource MaterialDesignRaisedLightButton}"
+                    Click="CnGame"
+                    ToolTip="Resource name: MaterialDesignRaisedLightButton" >
+                    <TextBlock FontSize="11" Text="支持CnGame"/>
+                </Button>
+            </StackPanel>
+            
+        </ScrollViewer>
+
+        <Border Grid.Row="1" Margin="20,0" Grid.Column="1" BorderThickness="1" BorderBrush="AntiqueWhite" Opacity="0.4"/>
+
+        <!--获取服务器列表以及连接-->
+        <StackPanel Grid.Row="1" Grid.Column="2" Margin="20,0" Orientation="Vertical">
+            <!--连接状态-->
+            <StackPanel Margin="0,3" Orientation="Horizontal">
+                <TextBlock Style="{StaticResource MiLanFont}" Text="状态:"/>
+                <Border BorderThickness="5"/>
+                <TextBlock Style="{StaticResource MiLanFont}" Text="（占位符）" Foreground="Green"/>
+            </StackPanel>
+
+            <StackPanel Margin="0,3" Orientation="Horizontal">
+                <TextBlock Style="{StaticResource MiLanFont}" Text="服务器:"/>
+                <Border BorderThickness="5"/>
+                <TextBlock Style="{StaticResource MiLanFont}" Text="CnGame-Sponsored" Foreground="Green"/>
+            </StackPanel>
+
+            <StackPanel Margin="0,3" Orientation="Horizontal">
+                <TextBlock Style="{StaticResource MiLanFont}" Text="服务器信息:"/>
+                <Border BorderThickness="5"/>
+                <TextBlock Style="{StaticResource MiLanFont}" Text="欢迎登陆CnGame Wiki" Foreground="Green"/>
+            </StackPanel>
+
+            <Border BorderThickness="10"/>
+
+            <!--可用节点列表-->
+            <TextBlock Margin="0,10" Style="{StaticResource MiLanFont}" Text="可用节点："/>
+            <DockPanel MinWidth="300" MaxHeight="120">
+                <ListBox
+                    x:Name="Servers"
+                    IsEnabled="{Binding IsChecked, ElementName=EnableListBox}"
+                    MinHeight="150"
+                    Style="{StaticResource MaterialDesignListBox}">
+                    <ListBox.Resources>
+                        <Style TargetType="ScrollBar" BasedOn="{StaticResource MaterialDesignScrollBarMinimal}" />
+                    </ListBox.Resources>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock 
+                                Style="{StaticResource MiLanFont}"
+                                Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
+
+            <!--连接-->
+            <StackPanel Margin="30,10" Orientation="Horizontal">
+                <Button
+                Margin="10,0"
+                Width="70"
+                Height="30"
+                Click="Connect"
+                materialDesign:ButtonProgressAssist.IsIndicatorVisible="{Binding Connected}"
+                materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                materialDesign:ButtonProgressAssist.Value="-1"
+                IsEnabled="{Binding CanConnect}"
+                materialDesign:ButtonAssist.CornerRadius="5" Cursor="Hand">
+                    <TextBlock Text="启动" />
+                </Button>
+                
+                <Button
+                Margin="10,0"
+                Width="70"
+                Height="30"
+                Click="Disconnect"
+                Style="{StaticResource MaterialDesignFlatDarkBgButton}"
+                materialDesign:ButtonAssist.CornerRadius="5">
+                    <TextBlock Text="停止" />
+                </Button>
+
+            </StackPanel>
+
+            <CheckBox Margin="40,5,0,0"
+                    x:Name="Relay"
+                    FontFamily="./Fonts/#小米兰亭 Pro VF"
+                    Content="由服务器中转"
+                    IsEnabled="{Binding CanConnect}"
+                    Style="{StaticResource MaterialDesignCheckBox}" />
+            
+        </StackPanel>
+    </Grid>
+</UserControl>

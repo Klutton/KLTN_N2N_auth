@@ -1,4 +1,5 @@
 ﻿using Nyan_n2n.Common.EdgeManage;
+using Nyan_n2n.Common.EventArgsModel;
 using Nyan_n2n.Common.Models;
 using Prism.Events;
 using System;
@@ -29,34 +30,40 @@ namespace Nyan_n2n.Views
             _eventAggregator = eventAggregator;
             InitializeComponent();
         }
-
-        private EdgeManager _manager;
         private void Connect(object sender, RoutedEventArgs e)
         {
-            Disconnect(null,null);
-            ConUpdate();
-            EdgeArgs preArges = new EdgeArgs(this.Ip.Text, this.Port.Text, this.Community.Text);
+            /*清单：
+             * -c 社区
+             * -l 主机
+             * -S1 强制中转（使用UDP）
+             * -S2 强制中转（使用TCP）我擦Windows不支持
+             * -z1 压缩传输lzo1x
+             * -z2 压缩传输zstd
+             * --no-port-forwarding 关闭UPnP/PMP端口转发
+             * -a 自定义虚拟ip（不推荐）
+             * -E 网卡启用多播
+             * -x 网卡优先级*/
+            EdgeArgs preArges = new EdgeArgs(this.Host.Text, this.Community.Text);
+            preArges.ForceRelay = (bool)this.Relay.IsChecked;
+            if (this.Zip.SelectedItem != null)
+            {
+                string select = this.Zip.SelectedItem.ToString();
+                if (select != "不压缩")
+                {
+                    if (select == "lzo1x") preArges.Zip = EdgeArgs.ZipEnum.LZO1x;
+                    if (select == "zstd") preArges.Zip = EdgeArgs.ZipEnum.ZSTD;
+                }
+            }
+            preArges.NoPortForwarding = (bool)this.NoPortForwarding.IsChecked;
+            preArges.VirtualIp = this.VirtualIp.Text;
+            preArges.MulticastMAC = (bool)this.MulticastMAC.IsChecked;
+            preArges.Priority = this.Priority.Text;
             string args = preArges.GenerateArgs();
-            _manager = new EdgeManager(args, _eventAggregator);
-            _manager.Start();
+            EdgeManager.Start(args);
         }
         private void Disconnect(object sender, RoutedEventArgs e)
         {
-            DisConUpdate();
-            if (_manager != null)
-            {
-                _manager.Stop();
-            }
-        }
-        private void ConUpdate()
-        {
-            status.Text = "连接";
-            status.Foreground = Brushes.Green;
-        }
-        private void DisConUpdate()
-        {
-            status.Text = "断开";
-            status.Foreground = Brushes.Red;
+            EdgeManager.Stop();
         }
     }
 }

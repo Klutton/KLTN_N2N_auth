@@ -130,11 +130,13 @@
     </ApplicationDefinition>
     <Compile Include="Common\Authentication\ConnectServer.cs" />
     <Compile Include="Common\EdgeManage\EdgeManager.cs" />
+    <Compile Include="Common\EventArgsModel\EdgeStatusEventArgs.cs" />
     <Compile Include="Common\IConfigureService.cs" />
     <Compile Include="Common\Models\EdgeArgs.cs" />
     <Compile Include="Common\Models\LoginRes.cs" />
     <Compile Include="Common\Models\RunLog.cs" />
     <Compile Include="Common\Models\RunStatus.cs" />
+    <Compile Include="Common\Models\ServerList.cs" />
     <Compile Include="Common\ValidationRules\ValidateCommunity.cs" />
     <Compile Include="Common\ValidationRules\ValidateIp.cs" />
     <Compile Include="Common\ValidationRules\ValidatePort.cs" />
@@ -142,6 +144,7 @@
     <Compile Include="Fonts\FontStyleInclude.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\AuthConViewModel.cs" />
+    <Compile Include="ViewModels\CnGameSponsorModel.cs" />
     <Compile Include="ViewModels\DirectConViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
@@ -151,6 +154,9 @@
     </Compile>
     <Compile Include="Views\AuthConView.xaml.cs">
       <DependentUpon>AuthConView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CnGameSponsorView.xaml.cs">
+      <DependentUpon>CnGameSponsorView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DirectConView.xaml.cs">
       <DependentUpon>DirectConView.xaml</DependentUpon>
@@ -174,6 +180,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AuthConView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CnGameSponsorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

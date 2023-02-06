@@ -3,33 +3,99 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:Nyan_n2n.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Margin="10,0">
-        <StackPanel>
-            <TextBlock FontSize="80" Text="Home"/>
-            <TextBlock Text="注意：验证连接还在开发，不能使用，目前仅展示了大概样式；"/>
-            <TextBlock Style="{StaticResource MiLanFont}" Foreground="IndianRed" Text="注意：直连界面中的连接和断开仅作提示参考使用，例如连接时输错了地址，程序便会运行之后自动退出（在下个版本优化）"/>
-            <TextBlock Style="{StaticResource MiLanFont}" Foreground="IndianRed" Text="注意：而此时仍然显示连接，其实是断开的（每次点击连接时，程序会先尝试断开之后重新发起连接"/>
-            <TextBlock Style="{StaticResource MiLanFont}" Foreground="IndianRed" Text="注意：如果换节点不点停止也许也没影响"/>
-            <Border BorderThickness="5"/>
-            <TextBlock Style="{StaticResource MiLanFont}" Foreground="CadetBlue" Text="代办：连接信息保存；连接状态识别"/>
-            <Border BorderThickness="5"/>
-            <TextBlock Style="{StaticResource MiLanFont}" Foreground="Green" Text="提示：当显示authentication error时，应当是先前连接时的连接没有释放掉"/>
-            <TextBlock Style="{StaticResource MiLanFont}" Foreground="Green" Text="提示：通俗来讲，就是位置还占着，需要断开一阵时间等待他释放连接（空出来位置），再去连接"/>
-            <TextBlock Style="{StaticResource MiLanFont}" Foreground="LawnGreen" Text="提示：当日志中提示tap not install之类字样时候，请确认先前安装过虚拟网卡没有"/>
-            <TextBlock Style="{StaticResource MiLanFont}" Foreground="LawnGreen" Text="提示：如果确定安装过了，重启电脑；否则使用文件夹中的安装包安装一个虚拟网卡"/>
-            <TextBlock Style="{StaticResource MiLanFont}" Foreground="GreenYellow" Text="提示：按windows键搜索 控制面板，点击后点击网络->网络和internet->网络和共享中心->更改适配器设置"/>
-            <TextBlock Style="{StaticResource MiLanFont}" Foreground="GreenYellow" Text="提示：看看有没有TAP-Windows Adapter字样的网卡，没有就是没装需要自己装"/>
-            <TextBlock Style="{StaticResource MiLanFont}" Foreground="Green" Text="提示：多看日志"/>
-            <Border BorderThickness="5"/>
-            <TextBlock Style="{StaticResource MiLanFont}" Foreground="Goldenrod" Text="如果遇到问题，请务必反馈到qq群631336782，这将帮助我改进软件以及找到开发方向"/>
-            <TextBlock Style="{StaticResource MiLanFont}" Foreground="red" Text="警告：该软件仅用于辅助使用n2n windows平台客户端以此优化局域网游戏联机体验，禁止用于违法犯罪活动！"/>
-            <TextBlock Style="{StaticResource MiLanFont}" Foreground="red" Text="警告：该软件仅用于辅助使用n2n windows平台客户端以此优化局域网游戏联机体验，禁止用于违法犯罪活动！"/>
-            <TextBlock Style="{StaticResource MiLanFont}" Foreground="red" Text="警告：该软件仅用于辅助使用n2n windows平台客户端以此优化局域网游戏联机体验，禁止用于违法犯罪活动！"/>
-            <TextBlock Style="{StaticResource MiLanFont}" Text="KLTN TECH（关于图标：这是一个耗时较长的工作，晚些时间（可能在数个月后）会正式更换图标相关内容，后续也会下放博客以及wiki支持等网址，这条消息大概需要最大化窗口才能看见，我是有意的（也有懒的成分"/>
-            <Image Source="../Images/Klu.jpg"/>
-        </StackPanel>
+        <ScrollViewer
+            x:Name="Viewer"
+            VerticalScrollBarVisibility="Auto"
+            HorizontalAlignment="Left">
+            <StackPanel Orientation="Vertical">
+
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Style="{StaticResource MiLanFont}" Text="临时手册：https://www.cngame.wiki/n2n-nyan"/>
+                    <Button
+                        HorizontalAlignment="Left"
+                        Width="130"
+                        IsEnabled="True"
+                        FontFamily="Microsoft YaHei UI"
+                        Style="{StaticResource MaterialDesignRaisedLightButton}"
+                        Click="Doc"
+                        ToolTip="Resource name: MaterialDesignRaisedLightButton" Cursor="Hand" >
+                        <TextBlock FontSize="11" Text="CnGame详细手册"/>
+                    </Button>
+                </StackPanel>
+                
+                <Expander
+                    HorizontalAlignment="Stretch"
+                    FontFamily="./Fonts/#小米兰亭 Pro VF"
+                    Header="注意">
+                    <TextBlock Width="{Binding ElementName=Viewer.Width}"
+                           TextWrapping="Wrap"
+                           Style="{StaticResource MiLanFont}">
+                    验证连接还在开发，不能使用，目前仅展示了大概样式；
+                    <LineBreak/>参数设置中不同页面之间参数不同步，以启动时的页面为主（例如一个在a页面勾选了中转而b页面没有，但是是在a页面启动的所以
+                    还是中转了的，解决方案已经想好了，鉴于工程量下一个版本再出
+                    </TextBlock>
+                </Expander>
+                <Border BorderThickness="1" BorderBrush="Gray"/>
+                <Expander
+                    HorizontalAlignment="Stretch"
+                    FontFamily="./Fonts/#小米兰亭 Pro VF"
+                    Header="代办">
+                    <TextBlock Width="{Binding ElementName=Viewer.Width}"
+                           TextWrapping="Wrap"
+                           Style="{StaticResource MiLanFont}">
+                        连接信息保存；ping小工具；虚拟ip显示
+                    </TextBlock>
+                </Expander>
+                <Border BorderThickness="1" BorderBrush="Gray"/>
+                <Expander
+                    HorizontalAlignment="Stretch"
+                    FontFamily="./Fonts/#小米兰亭 Pro VF"
+                    Header="提示">
+                    <TextBlock Width="{Binding ElementName=Viewer.Width}"
+                           TextWrapping="Wrap"
+                           Style="{StaticResource MiLanFont}">
+                           当显示authentication error时，应当是先前连接时的连接没有释放掉,
+                           通俗来讲，就是位置还占着，需要断开一阵时间等待他释放连接（空出来位置），再去连接<LineBreak/>
+                           提示：当日志中提示tap not install之类字样时候，请确认先前安装过虚拟网卡没有,
+                           如果确定安装过了，重启电脑；否则使用文件夹中的安装包安装一个虚拟网卡:按windows键搜索 控制面板，点击后点击网络->网络和internet->网络和共享中心->更改适配器设置
+                           <LineBreak/>看看有没有TAP-Windows Adapter字样的网卡，没有就是没装需要自己装<LineBreak/>多看日志
+                    </TextBlock>
+                </Expander>
+                <Border BorderThickness="1" BorderBrush="Gray"/>
+                <Expander
+                    HorizontalAlignment="Stretch"
+                    FontFamily="./Fonts/#小米兰亭 Pro VF"
+                    Header="图标">
+                    <StackPanel>
+                        <TextBlock Width="{Binding ElementName=Viewer.Width}"
+                           TextWrapping="Wrap"
+                           Style="{StaticResource MiLanFont}">
+                           KLTN TECH（关于图标：这是一个耗时较长的工作，晚些时间（可能在数个月后）会正式更换图标相关内容
+                        </TextBlock>
+                        <Border BorderThickness="3"/>
+                        <Image Source="../Images/Klu.jpg"/>
+                    </StackPanel>
+                </Expander>
+                <Border BorderThickness="1" BorderBrush="Gray"/>
+                <Expander
+                    HorizontalAlignment="Stretch"
+                    FontFamily="./Fonts/#小米兰亭 Pro VF"
+                    Header="其他">
+                    <TextBlock Width="{Binding ElementName=Viewer.Width}"
+                           TextWrapping="Wrap"
+                           Style="{StaticResource MiLanFont}">
+                           如果遇到问题，请务必反馈到qq群631336782，这将帮助我改进软件以及找到开发方向
+                           <LineBreak/><Span Foreground="red">警告：该软件仅用于辅助使用n2n windows平台客户端以此优化局域网游戏联机体验，禁止用于违法犯罪活动！</Span>
+                           <LineBreak/><Span Foreground="red">警告：该软件仅用于辅助使用n2n windows平台客户端以此优化局域网游戏联机体验，禁止用于违法犯罪活动！</Span>
+                           <LineBreak/><Span Foreground="red">警告：该软件仅用于辅助使用n2n windows平台客户端以此优化局域网游戏联机体验，禁止用于违法犯罪活动！</Span>
+                    </TextBlock>
+                </Expander>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </UserControl>

@@ -13,8 +13,15 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="日志" Style="{StaticResource MiLanFont}" FontSize="18"/>
-        <StackPanel Grid.Row="1">
+        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Bottom">
+
+            <TextBlock Style="{StaticResource MiLanFont}" Text="日志"  FontSize="18"/>
+
+            <Border BorderThickness="10"/>
+
+            <TextBlock Style="{StaticResource MiLanFont}" Text="{Binding Status}" Foreground="{Binding Foreground}" VerticalAlignment="Bottom" FontSize="13"/>
+
+        </StackPanel><StackPanel Grid.Row="1">
             <TextBox
                 VerticalAlignment="Top"
                 AcceptsReturn="True"

@@ -1,4 +1,5 @@
 ﻿using ImTools;
+using Nyan_n2n.Common.EventArgsModel;
 using Nyan_n2n.Common.Models;
 using Nyan_n2n.Views;
 using Prism.Events;
@@ -13,96 +14,94 @@ namespace Nyan_n2n.Common.EdgeManage
 {
     public class EdgeManager
     {
-        IEventAggregator _eventAggregator;
-        private bool _running = false;
-        public bool Disposed
+        static IEventAggregator _eventAggregator;
+        private static bool _running = false;
+        public static string Args;
+        public static void SetEventAggregator(IEventAggregator ea)
         {
-            get { return _running; }
-            set { _running = value; }
-        }
-        private string _args;
-        public EdgeManager(string args, IEventAggregator ea)
-        {
-            _args = args;
             _eventAggregator = ea;
-            _info = new ProcessStartInfo("edge.exe")
+        }
+
+        public static void Start(string args)
+        {
+            Stop();
+
+            ProcessStartInfo info = new ProcessStartInfo("edge.exe")
             {
-                UseShellExecute = true,
+                UseShellExecute = false,
                 CreateNoWindow = true,
-                WindowStyle = ProcessWindowStyle.Minimized,
-                RedirectStandardOutput = false,
+                WindowStyle = ProcessWindowStyle.Hidden,
+                RedirectStandardOutput = true,
                 Arguments = args,
             };
-        }
-        public void Start()
-        {
-            if (_running) return;
-            _running = true;
-            RunLog _log = new RunLog()
+
+            RunLog log = new RunLog()
             {
-                Message = $"正在尝试创建连接...\n使用参数{_args}",
-                Stop = false
+                Message = $"正在尝试创建连接...\n使用参数{args}",
+                Start = true
             };
-            _eventAggregator.GetEvent<RunLogEvent>().Publish(_log);
+            _eventAggregator.GetEvent<RunLogEvent>().Publish(log);
+            //新开一个线程运行edge
             Task.Run(() =>
             {
+                if(!_running )
+                    _running = true;
+
                 _edge = new Process();
-                _edge.StartInfo = _info;
-                /*_edge.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
+                _edge.StartInfo = info;
+                _edge.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
                 {
-                    // Prepend line numbers to each line of the output.
                     if (!String.IsNullOrEmpty(e.Data))
                     {
-                        _log = new RunLog()
+                        log = new RunLog()
                         {
                             Message = e.Data,
-                            Stop = false
+                            Start = false
                         };
-                        _eventAggregator.GetEvent<RunLogEvent>().Publish(_log);
+                        _eventAggregator.GetEvent<RunLogEvent>().Publish(log);
                     }
-                });*/
+                });
                 _edge.Start();
+
                 RunStatus status = new RunStatus(true);
                 _eventAggregator.GetEvent<RunStatusEvent>().Publish(status);
-                //_edge.BeginOutputReadLine();
-                _edge.WaitForExit();
-                _log.Message = "程序退出（若闪退请检查参数完整性以及文件完整性，后续版本会在启动前检查参数）";
-                _eventAggregator.GetEvent<RunLogEvent>().Publish(_log);
 
+                _edge.BeginOutputReadLine();
+                _edge.WaitForExit();
+                _running = false;
+                log.Message = "程序退出（若闪退请检查参数完整性、文件完整性、虚拟网卡是否安装）";
+                log.Start = false;
+                _eventAggregator.GetEvent<RunLogEvent>().Publish(log);
+                //广播进程结束
                 status.IsRunning = false;
                 _eventAggregator.GetEvent<RunStatusEvent>().Publish(status);
                 _edge.Dispose();
             });
         }
-        public void Stop()
+        public static void Stop()
         {
             if (_running)
             {
-                _running = true;
-                try
+                if (_edge == null)
+                {
+                    _running = false;
+                    return;
+                }
+                if (!_edge.HasExited)
                 {
                     _edge.Kill();
                     _edge.Dispose();
                     RunLog log = new RunLog()
                     {
                         Message = null,
-                        Stop = true
+                        Start = false
                     };
                     _eventAggregator.GetEvent<RunLogEvent>().Publish(log);
                 }
-                catch(Exception ex)
-                {
-                    RunLog __log = new RunLog()
-                    {
-                        Message = ex.Message,
-                        Stop = true
-                    };
-                    _eventAggregator.GetEvent<RunLogEvent>().Publish(__log);
-                }
+                _running = false;
             }
         }
-        private Process _edge;
-        private ProcessStartInfo _info;
+        private static Process _edge;
         private string _file = "edge.exe";
         public string File
         {

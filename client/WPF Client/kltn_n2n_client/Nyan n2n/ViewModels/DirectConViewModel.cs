@@ -18,13 +18,11 @@ namespace Nyan_n2n.ViewModels
         {
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<RunStatusEvent>().Subscribe(UpdateStatus);
-            //DisConUpdate = new RelayCommand(Search);
         }
         public event PropertyChangedEventHandler PropertyChanged;
-        public ICommand DisConUpdate { get; set; }
-        public ICommand ConUpdate { get; set; }
 
-        private string _status = "Nyan 🐱";
+        //绑定状态
+        private string _status = "断开";
         public string Status
         {
             get { return _status; }
@@ -34,12 +32,54 @@ namespace Nyan_n2n.ViewModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Status"));
             }
         }
+        //绑定颜色
+        private string _foreground = "Red";
+        public string Foreground
+        {
+            get { return _foreground; }
+            set {
+                _foreground = value;PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Foreground"));
+            }
+        }
+        //绑定IsIndicatorVisible
+        private string _connected = "False";
+        public string Connected
+        {
+            get { return _connected; }
+            set
+            {
+                _connected = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Connected"));
+            }
+        }
+        //绑定IsEnabled
+        private string _canConnect = "True";
+        public string CanConnect
+        {
+            get { return _canConnect; }
+            set
+            {
+                _canConnect = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CanConnect"));
+            }
+        }
         void UpdateStatus(RunStatus status)
         {
             if (status.IsRunning)
+            {
                 Status = "连接";
+                Foreground = "Green";
+                Connected = "True";
+                CanConnect = "False";
+            }
+
             else
+            {
                 Status = "断开";
+                Foreground = "Red";
+                Connected = "False";
+                CanConnect = "True";
+            }
         }
     }
 
