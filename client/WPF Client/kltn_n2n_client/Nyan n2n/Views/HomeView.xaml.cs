@@ -38,5 +38,10 @@ namespace Nyan_n2n.Views
         {
             System.Diagnostics.Process.Start("IExplore.exe", "https://www.cngame.wiki/Nyan-n2n-document");
         }
+        private void Temp(object sender, RoutedEventArgs e)
+        {
+
+            System.Diagnostics.Process.Start("IExplore.exe", "https://www.cngame.wiki/n2n-nyan"); 
+        }
     }
 }
