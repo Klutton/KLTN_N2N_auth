@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<CnGameSponsorStruct xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ServerListItem>
+    <Name>华北2</Name>
+    <Addr>n2n4.squad.ink:9527</Addr>
+  </ServerListItem>
+  <ForceRelay>true</ForceRelay>
+</CnGameSponsorStruct>

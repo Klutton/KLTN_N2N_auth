@@ -1,4 +1,5 @@
-﻿using Nyan_n2n.Common;
+﻿using MaterialDesignThemes.Wpf;
+using Nyan_n2n.Common;
 using Nyan_n2n.Common.EdgeManage;
 using Nyan_n2n.Common.Models;
 using Nyan_n2n.Extensions;
@@ -7,8 +8,10 @@ using Prism.Events;
 using Prism.Mvvm;
 using Prism.Regions;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Security.Permissions;
 using System.Text;
@@ -26,6 +29,9 @@ namespace Nyan_n2n.ViewModels
             MenuBars = new ObservableCollection<MenuBar>();
             NavigateCommand = new DelegateCommand<MenuBar>(Navigate);
             this._regionManager = regionManager;
+            _eventAggregator.GetEvent<RunLogEvent>().Subscribe(DoNotify);
+            Snackbar = new SnackbarMessageQueue(TimeSpan.FromMilliseconds(2000));
+
         }
         private void Navigate(MenuBar obj)
         {
@@ -60,10 +66,51 @@ namespace Nyan_n2n.ViewModels
         public void Configure()
         {
             CreateMenuBar();
-            _regionManager.Regions[PrismManager.MainViewRegionName].RequestNavigate("RunLogView");
+            foreach (var menuBar in MenuBars)
+            {
+                _regionManager.Regions[PrismManager.MainViewRegionName].RequestNavigate(menuBar.Namespace);
+            }
             _regionManager.Regions[PrismManager.MainViewRegionName].RequestNavigate("HomeView");
         }
 
+        /// <summary>
+        /// 获取runlog并弹出提示
+        /// </summary>
+        private SnackbarMessageQueue _snackbar;
+        public SnackbarMessageQueue Snackbar
+        {
+            get { return _snackbar; }
+            set
+            {
+                _snackbar = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        void DoNotify(RunLog log)
+        {
+            if (log.Notification == LogNotification.Connecting)
+            {
+                Snackbar.Enqueue("正在尝试连接到服务器");
+            }
+            else if (log.Notification == LogNotification.Connected)
+            {
+                Snackbar.Enqueue("连接成功！");
+            }
+            else if (log.Notification == LogNotification.Waiting)
+            {
+                Snackbar.Enqueue("等待服务器分配位置");
+            }
+            else if (log.Notification == LogNotification.Stop)
+            {
+                Snackbar.Enqueue("连接关闭");
+            }
+            else if (log.Notification == LogNotification.TapNotInstalled)
+            {
+                Snackbar.Enqueue("未安装驱动，到Nyan n2n目录下安装tap-windows-9.24.7-I601-Win10.exe");
+            }
+            
+        }
         public void ShutDown()
         {
             EdgeManager.Stop();

@@ -6,22 +6,36 @@ using System.Threading.Tasks;
 
 namespace Nyan_n2n.Common.Models
 {
-    public class Server
+    [Serializable]
+    public class ServerListItem
     {
-        private string _name;
-        public string Name
+        public override int GetHashCode()
         {
-            get { return _name; }
-            set { _name = value; }
+            return this.Addr.GetHashCode();
         }
-    }
-    public class ServerList
-    {
-        public ServerList(string n, string a)
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            ServerListItem other = obj as ServerListItem;
+            if (this.Name == other.Name && this.Addr == other.Addr)
+                return true;
+            return false;
+        }
+        public static bool operator == (ServerListItem a, ServerListItem b)
+        {
+            if (a.Addr == b.Addr && a.Name == b.Name) return true;
+            else return false;
+        }
+        public static bool operator != (ServerListItem a, ServerListItem b)
+        {
+            if (a.Addr != b.Addr && a.Name != b.Name) return true;
+            else return false;
+        }
+        /*public ServerListItem(string n, string a)
         {
             Name = n;
             Addr = a;
-        }
+        }*/
         /// <summary>
         /// 服务器名字
         /// </summary>

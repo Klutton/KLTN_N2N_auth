@@ -24,5 +24,10 @@ namespace Nyan_n2n.Views
         {
             InitializeComponent();
         }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("IExplore.exe", "https://klutton.github.io");
+        }
     }
 }

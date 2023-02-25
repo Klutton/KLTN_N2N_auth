@@ -1,5 +1,8 @@
-﻿using Nyan_n2n.Common.Models;
+﻿using DryIoc;
+using MaterialDesignThemes.Wpf;
+using Nyan_n2n.Common.Models;
 using Prism.Events;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Nyan_n2n.ViewModels
 {
-    public class CnGameSponsorModel : INotifyPropertyChanged
+    public class CnGameSponsorModel : BindableBase
     {
         IEventAggregator _eventAggregator;
         public CnGameSponsorModel(IEventAggregator eventAggregator)
@@ -18,7 +21,6 @@ namespace Nyan_n2n.ViewModels
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<RunStatusEvent>().Subscribe(UpdateStatus);
         }
-        public event PropertyChangedEventHandler PropertyChanged;
 
 
         //绑定IsIndicatorVisible
@@ -29,7 +31,7 @@ namespace Nyan_n2n.ViewModels
             set
             {
                 _connected = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Connected"));
+                RaisePropertyChanged();
             }
         }
         //绑定IsEnabled
@@ -40,7 +42,18 @@ namespace Nyan_n2n.ViewModels
             set
             {
                 _canConnect = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CanConnect"));
+                RaisePropertyChanged();
+            }
+        }
+        //绑定Text
+        private string _startStatus = "启动";
+        public string StartStatus
+        {
+            get { return _startStatus; }
+            set
+            {
+                _startStatus = value;
+                RaisePropertyChanged();
             }
         }
         void UpdateStatus(RunStatus status)
@@ -49,12 +62,16 @@ namespace Nyan_n2n.ViewModels
             {
                 Connected = "True";
                 CanConnect = "False";
+                StartStatus = "运行中";
+
+                if (status.IsRunning) { }
             }
 
             else
             {
                 Connected = "False";
                 CanConnect = "True";
+                StartStatus = "启动";
             }
         }
     }

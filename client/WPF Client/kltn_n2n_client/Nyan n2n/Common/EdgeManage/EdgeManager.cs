@@ -1,13 +1,14 @@
 ﻿using ImTools;
-using Nyan_n2n.Common.EventArgsModel;
 using Nyan_n2n.Common.Models;
 using Nyan_n2n.Views;
 using Prism.Events;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Nyan_n2n.Common.EdgeManage
@@ -49,15 +50,50 @@ namespace Nyan_n2n.Common.EdgeManage
 
                 _edge = new Process();
                 _edge.StartInfo = info;
+
+                bool connecting = true;
+                bool waiting = true;
+                bool connected = true;
+                bool tapNotInstalled = true;
+
+                string Connecting = "send REGISTER_SUPER to supernode";
+                string Connected = "[OK]";
+                string Waiting = "ERROR: authentication error, MAC or IP address already in use or not released yet by supernode";
+                string TapNotInstalled = "No Windows tap devices found";
+
                 _edge.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
                 {
                     if (!String.IsNullOrEmpty(e.Data))
                     {
                         log = new RunLog()
                         {
+                            Notification = LogNotification.None,
                             Message = e.Data,
                             Start = false
                         };
+
+                        //通知连接状态
+                        if (Regex.IsMatch(e.Data, Connecting) && connecting)
+                        {
+                            connecting = false;
+                            log.Notification = LogNotification.Connecting;
+                        }
+                        if (Regex.IsMatch(e.Data, Waiting) && waiting)
+                        {
+                            waiting = false;
+                            log.Notification = LogNotification.Waiting;
+                        }
+                        if (Regex.IsMatch(e.Data, Connected) && connected)
+                        {
+                            connected = false;
+                            log.Notification = LogNotification.Connected;
+                        }
+                        if (Regex.IsMatch(e.Data, TapNotInstalled) && tapNotInstalled)
+                        {
+                            tapNotInstalled = false;
+                            log.Notification = LogNotification.TapNotInstalled;
+                        }
+
                         _eventAggregator.GetEvent<RunLogEvent>().Publish(log);
                     }
                 });
@@ -69,6 +105,7 @@ namespace Nyan_n2n.Common.EdgeManage
                 _edge.BeginOutputReadLine();
                 _edge.WaitForExit();
                 _running = false;
+                log.Notification = LogNotification.Stop;
                 log.Message = "程序退出（若闪退请检查参数完整性、文件完整性、虚拟网卡是否安装）";
                 log.Start = false;
                 _eventAggregator.GetEvent<RunLogEvent>().Publish(log);

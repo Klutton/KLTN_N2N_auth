@@ -16,14 +16,31 @@
 
                 <StackPanel Orientation="Vertical">
                     <TextBlock>
-                        <Hyperlink Click="Temp">临时手册(详细手册完成前使用)</Hyperlink> 
+                        <Hyperlink Click="Blog">作者博客</Hyperlink>
                     </TextBlock>
                     <Border BorderThickness="3"/>
                     <TextBlock>
-                            <Hyperlink Click="Doc">CnGame详细手册</Hyperlink>
+                            <Hyperlink Click="Doc">CnGame使用手册</Hyperlink>
                     </TextBlock>
                 </StackPanel>
 
+                <Expander
+                    HorizontalAlignment="Stretch"
+                    FontFamily="./Fonts/#小米兰亭 Pro VF"
+                    Header="通知">
+                    <TextBlock Width="{Binding ElementName=Viewer.Width}"
+                           TextWrapping="Wrap"
+                           Style="{StaticResource MiLanFont}">
+                        以后将在此处更新通知
+                        <LineBreak/> CVLAN的开发已经开始，将摒弃n2n内核，重新开发一套组网应用，更侧重于游戏联机
+                        <LineBreak/> 我相信这将为玩家们对于稳定联机游戏的渴望有所贡献，该项目将遵循gnu协议开放源代码，任何人都可以在经过简单学习后部署属于自己的CVLAN服务器，如果对此项目感兴趣，可以移步到作者博客获取更详细的信息
+                        <LineBreak/>如果觉得此项目有价值且愿意帮助开发者，您可以访问我的博客赞助页面来赞助开发者（关于新应用的展望、Nyan n2n项目的重构也会在博客详细标注）
+                        <LineBreak/>如果链接显示404或无法进入该网页，请下次想起来的时候再来，因为Nyan n2n的发布与网页的维护不是同步的
+                        <LineBreak/><Hyperlink Click="Sponsor">点击赞助赞助</Hyperlink>
+                        <LineBreak/><Span Foreground="Red">赞助开发者不代表赞助免费搭建联机服务器的CnGame维基，他们免费维护了n2n服务器的运行</Span>
+                    </TextBlock>
+                </Expander>
+                <Border BorderThickness="1" BorderBrush="Gray"/>
                 <Expander
                     HorizontalAlignment="Stretch"
                     FontFamily="./Fonts/#小米兰亭 Pro VF"
@@ -33,6 +50,11 @@
                         Width="{Binding ElementName=Viewer.Width}"
                         TextWrapping="Wrap"
                         Style="{StaticResource MiLanFont}">
+                        1.4.0.0 --- 2023/2/24
+                        <LineBreak/>1 增加了连接状态消息提示
+                        <LineBreak/>2 增加了缓存连接信息的功能（下次打开时不用重新输入服务器地址等等
+                        <LineBreak/>
+                        <LineBreak/>
                         1.3.0.1 --- 2023/2/7
                         <LineBreak/>1 修改了主页，增设“更新”栏填写更新日志，今后更新日志在此处显示
                         <LineBreak/>2 修改了主页，优化手册跳转按钮
@@ -65,7 +87,7 @@
                     <TextBlock Width="{Binding ElementName=Viewer.Width}"
                            TextWrapping="Wrap"
                            Style="{StaticResource MiLanFont}">
-                        连接信息保存；ping小工具；虚拟ip显示；自动更新客户端
+                        ping小工具；虚拟ip显示；自动更新客户端
                     </TextBlock>
                 </Expander>
                 <Border BorderThickness="1" BorderBrush="Gray"/>
@@ -106,7 +128,8 @@
                     <TextBlock Width="{Binding ElementName=Viewer.Width}"
                            TextWrapping="Wrap"
                            Style="{StaticResource MiLanFont}">
-                           如果遇到问题，请务必反馈到qq群631336782，这将帮助我改进软件以及找到开发方向
+                           ui布局将要调整，多个“连接按钮”影响了用户使用的便利性，仍在思考怎么改；
+                           <LineBreak/>如果遇到问题，请务必反馈到qq群631336782，这将帮助我改进软件以及找到开发方向
                            <LineBreak/><Span Foreground="red">警告：该软件仅用于辅助使用n2n windows平台客户端以此优化局域网游戏联机体验，禁止用于违法犯罪活动！</Span>
                            <LineBreak/><Span Foreground="red">警告：该软件仅用于辅助使用n2n windows平台客户端以此优化局域网游戏联机体验，禁止用于违法犯罪活动！</Span>
                            <LineBreak/><Span Foreground="red">警告：该软件仅用于辅助使用n2n windows平台客户端以此优化局域网游戏联机体验，禁止用于违法犯罪活动！</Span>

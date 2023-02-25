@@ -55,7 +55,7 @@
             <StackPanel Margin="0,3" Orientation="Horizontal">
                 <TextBlock Style="{StaticResource MiLanFont}" Text="状态:"/>
                 <Border BorderThickness="5"/>
-                <TextBlock Style="{StaticResource MiLanFont}" Text="（占位符）" Foreground="Green"/>
+                <TextBlock Style="{StaticResource MiLanFont}" Text="{Binding StartStatus}" Foreground="Green"/>
             </StackPanel>
 
             <StackPanel Margin="0,3" Orientation="Horizontal">
@@ -97,7 +97,7 @@
             <StackPanel Margin="30,10" Orientation="Horizontal">
                 <Button
                 Margin="10,0"
-                Width="70"
+                Width="75"
                 Height="30"
                 Click="Connect"
                 materialDesign:ButtonProgressAssist.IsIndicatorVisible="{Binding Connected}"
@@ -105,7 +105,7 @@
                 materialDesign:ButtonProgressAssist.Value="-1"
                 IsEnabled="{Binding CanConnect}"
                 materialDesign:ButtonAssist.CornerRadius="5" Cursor="Hand">
-                    <TextBlock Text="启动" />
+                    <TextBlock Style="{StaticResource MiLanFont}" Text="{Binding StartStatus}" />
                 </Button>
                 
                 <Button
@@ -115,7 +115,7 @@
                 Click="Disconnect"
                 Style="{StaticResource MaterialDesignFlatDarkBgButton}"
                 materialDesign:ButtonAssist.CornerRadius="5">
-                    <TextBlock Text="停止" />
+                    <TextBlock Style="{StaticResource MiLanFont}" Text="停止" />
                 </Button>
 
             </StackPanel>
@@ -126,7 +126,7 @@
                     Content="由服务器中转"
                     IsEnabled="{Binding CanConnect}"
                     Style="{StaticResource MaterialDesignCheckBox}" />
-            
+ 
         </StackPanel>
     </Grid>
 </UserControl>
