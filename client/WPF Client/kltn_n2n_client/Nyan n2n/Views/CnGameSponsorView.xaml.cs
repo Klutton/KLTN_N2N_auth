@@ -32,9 +32,15 @@ namespace Nyan_n2n.Views
         CnGameSponsorStruct SavedData;
         List<ServerListItem> _serverList = new List<ServerListItem>()
         {
-            new ServerListItem{ Name = "华北1", Addr = "n2n2.squad.ink:6789" },
-            new ServerListItem{ Name = "华北2", Addr = "n2n4.squad.ink:9527" },
-            new ServerListItem{ Name = "华东", Addr = "n2n3.squad.ink:9527" }
+            new ServerListItem{ Name = "华北1 - 1", Addr = "n2n2.squad.ink:6789", Community = "Community1" },
+            new ServerListItem{ Name = "华北1 - 2", Addr = "n2n2.squad.ink:6789", Community = "Community2" },
+            new ServerListItem{ Name = "华北1 - 3", Addr = "n2n2.squad.ink:6789", Community = "Community3" },
+            new ServerListItem{ Name = "华北2 - 1", Addr = "n2n4.squad.ink:9527", Community = "Community1" },
+            new ServerListItem{ Name = "华北2 - 2", Addr = "n2n4.squad.ink:9527", Community = "Community2" },
+            new ServerListItem{ Name = "华北2 - 3", Addr = "n2n4.squad.ink:9527", Community = "Community3" },
+            new ServerListItem{ Name = "华东 - 1", Addr = "n2n3.squad.ink:9527", Community = "Community1" },
+            new ServerListItem{ Name = "华东 - 2", Addr = "n2n3.squad.ink:9527", Community = "Community2" },
+            new ServerListItem{ Name = "华东 - 3", Addr = "n2n3.squad.ink:9527", Community = "Community3" }
         };
         public CnGameSponsorView()
         {
@@ -52,7 +58,7 @@ namespace Nyan_n2n.Views
             if (!(server is null))
             {
                 SaveData();
-                EdgeArgs preArgs = new EdgeArgs(server.Addr, "");
+                EdgeArgs preArgs = new EdgeArgs(server.Addr, server.Community);
                 preArgs.ForceRelay = (bool)Relay.IsChecked;
                 EdgeManager.Start(preArgs.GenerateArgs());
             }

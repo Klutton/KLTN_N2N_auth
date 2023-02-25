@@ -10,7 +10,7 @@
         <ScrollViewer Grid.Row="1" Grid.Column="0" MaxWidth="740" VerticalScrollBarVisibility="Auto">
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left">
                 <TextBlock Style="{StaticResource MiLanFont}" FontSize="80" Text="About"/>
-                <TextBlock Style="{StaticResource MiLanFont}" Text="Version: 1.4.0.0"/>
+                <TextBlock Style="{StaticResource MiLanFont}" Text="Version: 1.4.0.1"/>
                 <TextBlock Style="{StaticResource MiLanFont}" Text="关于版本的说明：版本的敲定其实是不严谨的，而且没有beta alpha demo之类的前缀，纯属从项目的建立开始记录"/>
                 <TextBlock Style="{StaticResource MiLanFont}" Text="在更新完此版本后，项目将要重构，届时会开源代码，详情请移步博客"/>
                 <TextBlock Style="{StaticResource MiLanFont}" Foreground="Cyan" Text="投放建议和bug反馈请发送邮件到 kluttonm@outlook.com"/>

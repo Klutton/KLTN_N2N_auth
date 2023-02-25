@@ -50,6 +50,10 @@
                         Width="{Binding ElementName=Viewer.Width}"
                         TextWrapping="Wrap"
                         Style="{StaticResource MiLanFont}">
+                        1.4.0.1 --- 2023/2/25
+                        <LineBreak/>1 修改了免费节点
+                        <LineBreak/>
+                        <LineBreak/>
                         1.4.0.0 --- 2023/2/24
                         <LineBreak/>1 增加了连接状态消息提示
                         <LineBreak/>2 增加了缓存连接信息的功能（下次打开时不用重新输入服务器地址等等

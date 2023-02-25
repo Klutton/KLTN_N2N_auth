@@ -17,18 +17,18 @@ namespace Nyan_n2n.Common.Models
         {
             if (obj == null) return false;
             ServerListItem other = obj as ServerListItem;
-            if (this.Name == other.Name && this.Addr == other.Addr)
+            if (Name == other.Name && Addr == other.Addr && Community == other.Community)
                 return true;
             return false;
         }
         public static bool operator == (ServerListItem a, ServerListItem b)
         {
-            if (a.Addr == b.Addr && a.Name == b.Name) return true;
+            if (a.Addr == b.Addr && a.Name == b.Name && a.Community == b.Community) return true;
             else return false;
         }
         public static bool operator != (ServerListItem a, ServerListItem b)
         {
-            if (a.Addr != b.Addr && a.Name != b.Name) return true;
+            if (a.Addr != b.Addr && a.Name != b.Name && a.Community == b.Community) return true;
             else return false;
         }
         /*public ServerListItem(string n, string a)
@@ -54,6 +54,14 @@ namespace Nyan_n2n.Common.Models
         {
             get { return _addr; }
             set { _addr = value; }
+        }
+
+        //服务器小组
+        private string _community;
+        public string Community
+        {
+            get { return _community; }
+            set { _community = value; }
         }
     }
 }
